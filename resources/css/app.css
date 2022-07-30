@@ -1,0 +1,32 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/*Custom*/
+
+/*
+NOTA antes de importar 
+cambiar la ruta de la miniatura png en node_modules\lightslider\src\css\lightslider.css en linea 157
+background-image: url('http://sachinchoolur.github.io/lightslider/dist/img/controls.png');
+*/
+@import "lightslider/src/css/lightslider";
+
+/*
+NOTA antes de importar 
+cambiar la ruta de los recursos en  node_modules/lightgallery/src/css/lightgallery.css en...
+linea 3
+src: url("http://sachinchoolur.github.io/lightGallery/lightgallery/fonts/lg.ttf?22t19m") format("truetype"), url("http://sachinchoolur.github.io/lightGallery/lightgallery/fonts/lg.woff?22t19m") format("woff"), url("http://sachinchoolur.github.io/lightGallery/lightgallery/fonts/lg.svg?22t19m#lg") format("svg");
+linea 413
+background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/vimeo-play.png") no-repeat scroll 0 0 transparent;
+linea 416
+background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/vimeo-play.png") no-repeat scroll 0 -58px transparent;
+linea 419
+background: transparent url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/video-play.png") no-repeat scroll 0 0;background: transparent url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/video-play.png") no-repeat scroll 0 0;
+linea 430
+background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/video-play.png") no-repeat scroll 0 0 transparent;
+linea 433
+background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/video-play.png") no-repeat scroll 0 -60px transparent;
+*/
+@import "lightgallery/src/css/lightgallery";
+
+@import "./styles.css"
