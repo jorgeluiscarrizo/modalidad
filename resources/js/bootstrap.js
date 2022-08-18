@@ -29,10 +29,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 //Custom scritps
 
-window.$ = require('jquery');
+//Custom scritps
+
+//DESCOMENTAR PARA LITHGALLERY FUNCIONE
+//window.$ = require('jquery');
 
 //For lightslider
-window.jQuery  = require('jquery');
+//DESCOMENTAR PARA LITHGALLERY FUNCIONE
+//window.jQuery  = require('jquery');
 require('lightslider');
 require('lightgallery');
 //For plugins lightgallery

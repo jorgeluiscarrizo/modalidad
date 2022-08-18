@@ -12,8 +12,8 @@ use Livewire\WithFileUploads;
 class DetailsellerUpdate extends Component
 {
     public $detailseller;
-    public $id_sellers;
-    public $id_routes;
+    public $seller_id;
+    public $route_id;
     public $state;
     public $date_i;
     public $date_f;
@@ -28,8 +28,8 @@ class DetailsellerUpdate extends Component
 
         if ($this->detailseller) {
             //cargando datos de la detailseller
-            $this->id_sellers = $this->detailseller->id_sellers;
-            $this->id_routes = $this->detailseller->id_routes;
+            $this->seller_id = $this->detailseller->seller_id;
+            $this->route_id = $this->detailseller->route_id;
             $this->date_i = $this->detailseller->date_i;
             $this->date_f = $this->detailseller->date_f;
             $this->slug = $this->detailseller->slug;
@@ -44,8 +44,8 @@ class DetailsellerUpdate extends Component
     }
     protected $rules = [
         //restriccion detailseller
-        'id_sellers' => 'nullable',
-        'id_routes' => 'nullable',
+        'seller_id' => 'nullable',
+        'route_id' => 'nullable',
         'state' => 'required',
     ];
     public function submit()
@@ -57,8 +57,8 @@ class DetailsellerUpdate extends Component
         //Actualizando registro
         $this->detailseller->update([
 
-            'id_sellers' => $this->id_sellers,
-            'id_routes' => $this->id_routes,
+            'seller_id' => $this->seller_id,
+            'route_id' => $this->route_id,
             'date_i' => $this->date_i,
             'date_f' => $this->date_f,
             'slug' => Str::slug(bcrypt(time())),

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class BatchCreate extends Component
 {
     public $batch;
-    public $id_products;
+    public $product_id;
     public $name;
     public $price;
     public $stock;
@@ -28,7 +28,7 @@ class BatchCreate extends Component
     }
     //reglas para validacion
     protected $rules = [
-        'id_products' => 'required',
+        'product_id' => 'required',
         'name' => 'required|max:20|min:2|unique:batches,name',
         'price' => 'required',
         'stock' => 'required',
@@ -42,7 +42,7 @@ class BatchCreate extends Component
         //Creando registro person
         
         $this->batch = Batch::create([
-            'id_products' => $this->id_products,
+            'product_id' => $this->product_id,
             'name' => $this->name,
             'price' => $this->price,
             'stock' => $this->stock,
@@ -66,7 +66,7 @@ class BatchCreate extends Component
     //Funcion para limpiar imputs
     public function cleanInputs()
     {
-        $this->id_products = "";
+        $this->product_id = "";
         $this->name = "";
         $this->price = "";
         $this->stock = "";
@@ -81,7 +81,7 @@ class BatchCreate extends Component
     public function selectedCustomer($id)
     {
         $this->product = Product::with('product')->find($id);
-        $this->id_products = $id;
+        $this->product_id = $id;
     }
     //Escuchadores para botones de alertas
     protected $listeners = [

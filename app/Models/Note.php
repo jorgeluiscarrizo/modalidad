@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     protected $fillable = [
-    'id_clients',
-    'id_sellers',
+    'client_id',
+    'seller_id',
     'total',
     'slug',
     'state'

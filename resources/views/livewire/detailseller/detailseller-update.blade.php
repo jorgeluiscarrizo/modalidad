@@ -16,7 +16,7 @@
            <div class="">
                Seleccinar Vendedor
            </div>
-           <select wire:model="id_sellers" wire:change="onChangeSelectSeller"
+           <select wire:model="seller_id" wire:change="onChangeSelectSeller"
                class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
                required>
 
@@ -29,7 +29,7 @@
                @endforelse
            </select>
 
-           @error('id_sellers')
+           @error('seller_id')
                <p class="text-red-500 font-semibold my-2">
                    {{ $message }}
                </p>
@@ -42,7 +42,7 @@
            <div class="">
                Seleccinar Ruta
            </div>
-           <select wire:model="id_routes" wire:change="onChangeSelectRoute"
+           <select wire:model="route_id" wire:change="onChangeSelectRoute"
                class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
                required>
 
@@ -55,7 +55,7 @@
                @endforelse
            </select>
 
-           @error('id_routes')
+           @error('route_id')
                <p class="text-red-500 font-semibold my-2">
                    {{ $message }}
                </p>

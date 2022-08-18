@@ -15,13 +15,13 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_type');
+            $table->unsignedBigInteger('type_id');
             $table->string('name')->nullable();
             $table->string('num_cell');
             $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->foreign('id_type')
+            $table->foreign('type_id')
             ->references('id')
             ->on('types')
             ->onDelete('cascade');

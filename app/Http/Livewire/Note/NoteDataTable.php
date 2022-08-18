@@ -8,7 +8,7 @@ use App\Models\Batch;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
-class NoteDataTable extends Component
+class NoteDataTable extends LivewireDatatable
 {
     public $exportable = true;
     public $model = Note::class;
@@ -48,17 +48,17 @@ class NoteDataTable extends Component
                 ->filterable(),
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
-                return view('livewire.sale.sale-table-actions', ['id' => $id, 'slug' => $slug]);
+                return view('livewire.note.note-table-actions', ['id' => $id, 'slug' => $slug]);
                 })->label('Opciones')
                 ->excludeFromExport()
 
         ];
     }
     public function cancelsale($id){
-        $this->productnotes = Productnote::all()->where('id_notes', $id);
+        $this->productnotes = Productnote::all()->where('note_id', $id);
         foreach ($this->productnotes as $id_ => $item) {
             
-            $this->batch = Batch::where('id', $item['id_batches'])->firstOrFail();
+            $this->batch = Batch::where('id', $item['batche_id'])->firstOrFail();
             $this->batch->update([
                 'stock' =>  $this->batch->stock + $item['quantity'],
             ]);

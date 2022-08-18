@@ -25,10 +25,10 @@ class DetailsellerDataTable extends LivewireDatatable
     {
         return (Detailseller::query()
         ->join('sellers', function ($join) {
-            $join->on('sellers.id', '=', 'detailsellers.id_sellers',);
+            $join->on('sellers.id', '=', 'detailsellers.seller_id',);
         })
         ->join('routes', function ($join) {
-            $join->on('routes.id', '=', 'detailsellers.id_routes');
+            $join->on('routes.id', '=', 'detailsellers.route_id');
         })
     );        
     }

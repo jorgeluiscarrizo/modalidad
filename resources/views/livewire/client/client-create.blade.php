@@ -29,7 +29,7 @@
             <div class="">
                 Seleccionar Tipo
             </div>
-            <select wire:model="id_type" wire:change="onChangeSelectType"
+            <select wire:model="type_id" wire:change="onChangeSelectType"
                 class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
                 required>
 
@@ -42,7 +42,7 @@
                 @endforelse
             </select>
 
-            @error('id_type')
+            @error('type_id')
                 <p class="text-red-500 font-semibold my-2">
                     {{ $message }}
                 </p>

@@ -27,10 +27,10 @@ class RouteDataTable extends LivewireDatatable
     {
         return (Route::query()
         ->join('cities', function ($join) {
-            $join->on('cities.id', '=', 'routes.id_cities',);
+            $join->on('cities.id', '=', 'routes.citi_id',);
         })
         ->join('goals', function ($join) {
-            $join->on('goals.id', '=', 'routes.id_goals');
+            $join->on('goals.id', '=', 'routes.goal_id');
         }));         
     }
     public function columns()

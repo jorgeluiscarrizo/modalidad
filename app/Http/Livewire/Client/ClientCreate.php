@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 class ClientCreate extends Component
 {
     public $client;
-    public $id_type;
+    public $type_id;
     public $state = "ACTIVE";
     public $name;
     public $num_cell;
@@ -39,7 +39,7 @@ class ClientCreate extends Component
     //reglas para validacion
     protected $rules = [
         //restriccion 
-        'id_type' => 'required',
+        'type_id' => 'required',
         'name' => 'required|max:255|min:3',
         'num_cell' => 'required|regex:/^([0-9\s-+()]*)$/|min:8|max:10',
         'state' => 'required',
@@ -51,7 +51,7 @@ class ClientCreate extends Component
         $this->validate();
         //Creando registro client
         Client::create([
-            'id_type' => $this->id_type,
+            'type_id' => $this->type_id,
             'name' => $this->name,
             'num_cell' => $this->num_cell,
             //encriptando slug
@@ -76,7 +76,7 @@ class ClientCreate extends Component
     //Funcion para limpiar imputs
     public function cleanInputs()
     {
-        $this->id_type = "";
+        $this->type_id = "";
         $this->name = "";
         $this->num_cell = "";
      

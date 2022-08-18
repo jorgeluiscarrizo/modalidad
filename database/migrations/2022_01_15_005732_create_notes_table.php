@@ -15,17 +15,17 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_clients');
-            $table->unsignedBigInteger('id_sellers');
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('seller_id');
             $table->double('total', 8, 2)->nullable();
             $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->foreign('id_clients')
+            $table->foreign('client_id')
             ->references('id')
             ->on('clients')
             ->onDelete('cascade');
-            $table->foreign('id_sellers')
+            $table->foreign('seller_id')
             ->references('id')
             ->on('sellers')
             ->onDelete('cascade');

@@ -15,17 +15,17 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_cities');
-            $table->unsignedBigInteger('id_goals');
+            $table->unsignedBigInteger('citi_id');
+            $table->unsignedBigInteger('goal_id');
             $table->string('neighborhood')->nullable();
             $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->foreign('id_cities')
+            $table->foreign('citi_id')
             ->references('id')
             ->on('cities')
             ->onDelete('cascade');
-            $table->foreign('id_goals')
+            $table->foreign('goal_id')
             ->references('id')
             ->on('goals')
             ->onDelete('cascade');

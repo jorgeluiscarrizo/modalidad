@@ -27,7 +27,7 @@
                     {{-- descripcion --}}
                     <x-jet-label for="description" value="Descripcion" />
                     <x-jet-input type="text" placeholder="Descripcion" wire:model="description"
-                        class="mt-1 block w-full rounded-fx" required />
+                        class="mt-1 block w-full rounded-fx"/>
                     @error('description')
                         <p class="text-red-500 font-semibold my-2">
                             {{ $message }}

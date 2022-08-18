@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 class ClientUpdate extends Component
 {
     public $client;
-    public $id_type;
+    public $type_id;
     public $name;
     public $num_cell;
     public $slug;
@@ -25,7 +25,7 @@ class ClientUpdate extends Component
 
         if ($this->client) {
             //cargando datos de la client
-            $this->id_type = $this->client->id_type;
+            $this->type_id = $this->client->type_id;
             $this->name = $this->client->name;
             $this->num_cell = $this->client->num_cell;
             $this->slug = $this->client->slug;
@@ -39,7 +39,7 @@ class ClientUpdate extends Component
     }
     protected $rules = [
         //restriccion client
-        'id_type' => 'nullable',
+        'type_id' => 'nullable',
         'name' => 'required|max:255|min:3',
         'num_cell' => 'required|max:255|min:3',
         'state' => 'required',
@@ -53,7 +53,7 @@ class ClientUpdate extends Component
         //Actualizando registro
         $this->client->update([
 
-            'id_type' => $this->id_type,
+            'type_id' => $this->type_id,
             'name' => $this->name,
             'num_cell' => $this->num_cell,
             'slug' =>  Str::slug(bcrypt(time())),

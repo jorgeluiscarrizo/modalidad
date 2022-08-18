@@ -27,7 +27,7 @@
           <div class="">
               Seleccionar Ciudad
           </div>
-          <select wire:model="id_cities" wire:change="onChangeSelectCity"
+          <select wire:model="citi_id" wire:change="onChangeSelectCity"
               class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
               required>
 
@@ -40,7 +40,7 @@
               @endforelse
           </select>
 
-          @error('id_cities')
+          @error('citi_id')
               <p class="text-red-500 font-semibold my-2">
                   {{ $message }}
               </p>
@@ -53,7 +53,7 @@
           <div class="">
               Seleccionar Meta
           </div>
-          <select wire:model="id_goals" wire:change="onChangeSelectGoal"
+          <select wire:model="goal_id" wire:change="onChangeSelectGoal"
               class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
               required>
 
@@ -66,7 +66,7 @@
               @endforelse
           </select>
 
-          @error('id_goals')
+          @error('goal_id')
               <p class="text-red-500 font-semibold my-2">
                   {{ $message }}
               </p>

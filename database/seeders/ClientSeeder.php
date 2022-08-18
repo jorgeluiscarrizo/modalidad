@@ -17,7 +17,7 @@ class ClientSeeder extends Seeder
     {
         //cliente1
         Client::create([
-            'id_type' => 1,
+            'type_id' => 1,
             'name' => 'Pedro Barrera',
             'num_cell' => '789-3264',
             //encriptando slug
@@ -26,7 +26,7 @@ class ClientSeeder extends Seeder
         ]);
         //cliente12
         Client::create([
-            'id_type' => 2,
+            'type_id' => 2,
             'name' => 'Carlos Jurado',
             'num_cell' => '789-3264',
             //encriptando slug
@@ -35,7 +35,7 @@ class ClientSeeder extends Seeder
         ]);
         //cliente3
         Client::create([
-            'id_type' => 3,
+            'type_id' => 3,
             'name' => 'Ramon Velasquez',
             'num_cell' => '789-3264',
             //encriptando slug

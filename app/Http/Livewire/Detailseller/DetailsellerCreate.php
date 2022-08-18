@@ -12,8 +12,8 @@ use Livewire\WithFileUploads;
 class DetailsellerCreate extends Component
 {
     public $detailseller;
-    public $id_sellers;
-    public $id_routes;
+    public $seller_id;
+    public $route_id;
     public $state = "ACTIVE";
     public $date_i;
     public $date_f;
@@ -40,8 +40,8 @@ class DetailsellerCreate extends Component
     //reglas para validacion
     protected $rules = [
         //restriccion 
-        'id_sellers' => 'required',
-        'id_routes' => 'required',
+        'seller_id' => 'required',
+        'route_id' => 'required',
         'date_i' => 'required',
         'date_f' => 'required',
         'state' => 'required',
@@ -53,8 +53,8 @@ class DetailsellerCreate extends Component
         $this->validate();
         //Creando registro detailseller
         Detailseller::create([
-            'id_sellers' => $this->id_sellers,
-            'id_routes' => $this->id_routes,
+            'seller_id' => $this->seller_id,
+            'route_id' => $this->route_id,
             'date_i' => $this->date_i,
             'date_f' => $this->date_f,
             'slug' => Str::slug(bcrypt(time())),
@@ -76,8 +76,8 @@ class DetailsellerCreate extends Component
     //Funcion para limpiar imputs
     public function cleanInputs()
     {
-        $this->id_sellers = "";
-        $this->id_routes = "";
+        $this->seller_id = "";
+        $this->route_id = "";
         $this->date_i = "";
         $this->date_f = "";  
     }

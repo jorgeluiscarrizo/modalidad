@@ -9,7 +9,7 @@ NOTA antes de importar
 cambiar la ruta de la miniatura png en node_modules\lightslider\src\css\lightslider.css en linea 157
 background-image: url('http://sachinchoolur.github.io/lightslider/dist/img/controls.png');
 */
-@import "lightslider/src/css/lightslider";
+/*@import "lightslider/src/css/lightslider";*/
 
 /*
 NOTA antes de importar 
@@ -27,6 +27,6 @@ background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/vi
 linea 433
 background: url("http://sachinchoolur.github.io/lightGallery/lightgallery/img/video-play.png") no-repeat scroll 0 -60px transparent;
 */
-@import "lightgallery/src/css/lightgallery";
+/*@import "lightgallery/src/css/lightgallery";*/
 
-@import "./styles.css"
+/*@import "./styles.css"*/

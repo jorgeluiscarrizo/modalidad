@@ -15,14 +15,14 @@ class CreateBatchesTable extends Migration
     {
         Schema::create('batches', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_products');
+            $table->unsignedBigInteger('product_id');
             $table->string('name');
             $table->decimal('price', 8, 2)->nullable();
             $table->integer('stock');
             $table->string('slug')->inique();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
             $table->timestamps();
-            $table->foreign('id_products')->references('id')->on('products')->onDedelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDedelete('cascade');
         });
     }
 

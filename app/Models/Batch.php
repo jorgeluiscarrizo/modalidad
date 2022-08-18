@@ -9,7 +9,7 @@ class Batch extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_products',
+        'product_id',
         'name',
         'price',
         'stock',

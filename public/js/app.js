@@ -3829,10 +3829,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 //Custom scritps
-
-window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); //For lightslider
-
-window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+//Custom scritps
+//DESCOMENTAR PARA LITHGALLERY FUNCIONE
+//window.$ = require('jquery');
+//For lightslider
+//DESCOMENTAR PARA LITHGALLERY FUNCIONE
+//window.jQuery  = require('jquery');
 
 __webpack_require__(/*! lightslider */ "./node_modules/lightslider/dist/js/lightslider.js");
 

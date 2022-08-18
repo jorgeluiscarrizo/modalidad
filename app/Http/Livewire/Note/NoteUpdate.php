@@ -18,8 +18,8 @@ class NoteUpdate extends Component
     {
         $this->note = Note::where('slug', $slug)->firstOrFail();
         if ($this->note) {
-            $this->client = Client::where('id', $this->note->id_clients)->firstOrFail();
-            $this->productnotes = Productnote::all()->where('id_notes', $this->note->id);
+            $this->client = Client::where('id', $this->note->client_id)->firstOrFail();
+            $this->productnotes = Productnote::all()->where('note_id', $this->note->id);
 
             $this->name = $this->person->name;
             $this->ci = $this->person->ci;

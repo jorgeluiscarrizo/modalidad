@@ -25,7 +25,7 @@ class BatchDataTable extends LivewireDatatable
         //return Batch::query();
         return (Batch::query()
         ->join('products', function ($join) {
-            $join->on('products.id', '=', 'batches.id_products');
+            $join->on('products.id', '=', 'batches.product_id');
         }));    
     }
 

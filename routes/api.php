@@ -1,7 +1,6 @@
 <?php
 
 use App\Actions\JsonApiAuth\AuthKit;
-use App\Http\Controllers\Api\GameController;
 use App\Http\Controllers\Api\MapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +45,3 @@ require __DIR__ . '/json-api-auth.php';
 //    ]);
 //})->middleware('auth:api', 'verified');
 
-Route::get('/Users', [GameController::class, 'Users'])->middleware('auth:sanctum');

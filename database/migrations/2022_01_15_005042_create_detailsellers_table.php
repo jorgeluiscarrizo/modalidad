@@ -15,18 +15,18 @@ class CreateDetailsellersTable extends Migration
     {
         Schema::create('detailsellers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_sellers')->nullable();
-            $table->unsignedBigInteger('id_routes')->nullable();
+            $table->unsignedBigInteger('seller_id')->nullable();
+            $table->unsignedBigInteger('route_id')->nullable();
             $table->date('date_i')->nullable();
             $table->date('date_f')->nullable();
             $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->foreign('id_sellers')
+            $table->foreign('seller_id')
             ->references('id')
             ->on('sellers')
             ->onDelete('cascade');
-            $table->foreign('id_routes')
+            $table->foreign('route_id')
             ->references('id')
             ->on('routes')
             ->onDelete('cascade');

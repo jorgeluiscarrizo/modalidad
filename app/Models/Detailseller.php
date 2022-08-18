@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Detailseller extends Model
 {
     protected $fillable = [
-        'id_sellers',
-        'id_routes',
+        'seller_id',
+        'route_id',
         'date_i',
         'date_f',
         'slug',

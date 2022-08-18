@@ -5,27 +5,27 @@
         </div>
     </x-slot>
     <div class="container m-auto bg-white mt-5 rounded-md">
-        
+
         <form wire:submit.prevent="submit" class="m-10 mt-0 p-4">
             {{-- select client --}}
-            
+
             <div wire:ignore class="my-2">
                 <div class="">
                     Cliente
                 </div>
-                <select id="select-client" wire:model="id_clients"
+                <select id="select-client" wire:model="client_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
                     required>
                     <option selected>(Seleccionar)</option>
                     @forelse ($clients as $item)
                         <option value="{{ $item->id }}">
                             Celular: {{ $item->num_cell }} | Nombre:
-                            {{ $item->name }}</option>
+                           {{$item->name }}</option>
                     @empty
                         <option disabled>Sin registros</option>
                     @endforelse
                 </select>
-                @error('id_clients')
+                @error('client_id')
                     <p class="text-red-500 font-semibold my-2">
                         {{ $message }}
                     </p>
@@ -37,7 +37,7 @@
             <div class="mt-2 text-sm border rounded-md p-4">
                 @if ($client)
                     <span class="opacity-50">Nombre completo : </span>
-                    <span><strong>{{ $client->name }}</strong></span>
+                    <span><strong>{{$client->name }}</strong></span>
                     <br>
                     <span class="opacity-50">Celular : </span>
                     <span><strong>{{ $client->num_cell }}</strong></span>
@@ -47,59 +47,60 @@
                 @endif
             </div>
             {{-- end info client --}}
- {{-- select seller --}}
- <div wire:ignore class="my-2">
-    <div class="">
-        Vendedor
-    </div>
-    <select id="select-sellers" wire:model="id_sellers"
-        class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
-        required>
-        <option selected>(Seleccionar)</option>
-        @forelse ($sellers as $item)
-            <option value="{{ $item->id }}"> Nombre:
-                {{ $item->name }}</option>
-        @empty
-            <option disabled>Sin registros</option>
-        @endforelse
-    </select>
-    @error('id_sellers')
-        <p class="text-red-500 font-semibold my-2">
-            {{ $message }}
-        </p>
-    @enderror
-</div>
-{{-- end seller --}}
+            {{-- select seller --}}
+            <div wire:ignore class="my-2">
+                <div class="">
+                    Vendedor
+                </div>
+                <select id="select-sellers" wire:model="seller_id"
+                    class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
+                    required>
+                    <option selected>(Seleccionar)</option>
+                    @forelse ($sellers as $item)
+                        <option value="{{ $item->id }}"> Nombre:
+                            {{$item->name }}</option>
+                    @empty
+                        <option disabled>Sin registros</option>
+                    @endforelse
+                </select>
+                @error('seller_id')
+                    <p class="text-red-500 font-semibold my-2">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            {{-- end seller --}}
 
-{{-- info seller --}}
-<div class="mt-2 text-sm border rounded-md p-4">
-    @if ($seller)
-        <span class="opacity-50">Nombre completo : </span>
-        <span><strong>{{ $selller->name }}</strong></span>
-        <br>
-    @else
-        <span class="text-red-500 opacity-50">Ningun vendedor seleccionado</span>
-    @endif
-</div>
-{{-- end info seller --}}
+            {{-- info seller --}}
+            <div class="mt-2 text-sm border rounded-md p-4">
+                @if ($seller)
+                    <span class="opacity-50">Nombre completo : </span>
+                    <span><strong> {{ $seller->name }}</strong></span>
+                    <br>
+                @else
+                    <span class="text-red-500 opacity-50">Ningun vendedor seleccionado</span>
+                @endif
+            </div>
+            {{-- end info seller --}}
 
             {{-- select batch --}}
             <div wire:ignore class="my-2">
                 <div class="">
                     Lote
                 </div>
-                <select id="select-batchs" wire:model="id_batches"
+                <select id="select-batchs" wire:model="batche_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
                     required>
                     <option selected>(Seleccionar)</option>
                     @forelse ($batchs as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}, {{ $item->product->name }}
+                        <option value="{{ $item->id }}">
+                            Lote {{$item->name }}, Producto {{$item->product->name}}
                         </option>
                     @empty
                         <option disabled>Sin registros</option>
                     @endforelse
                 </select>
-                @error('id_batches')
+                @error('batche_id')
                     <p class="text-red-500 font-semibold my-2">
                         {{ $message }}
                     </p>
@@ -108,7 +109,7 @@
             {{-- end batch --}}
             {{-- info batch --}}
             <div class="mt-2 text-sm border rounded-md p-4">
-                @if ($batch)
+                 @if ($batch)
                     <div class="flex justify-between ...">
                         <div>
                             <span class="opacity-50">Nombre : </span>
@@ -120,9 +121,9 @@
                             <span class="opacity-50">Precio : </span>
                             <span><strong>{{ $batch->price }}</strong></span>
                             <br>
-                                <hr class=" my-2">
-                                <span class="opacity-50">Producto : </span>
-                                <span><strong>{{ $batch->product->name }}</strong></span>
+                            <hr class=" my-2">
+                            <span class="opacity-50">Producto : </span>
+                            <span><strong>{{ $batch->product->name }}</strong></span>
                         </div>
                         <div>
                             <a class="h-12 w-full rounded-full flex items-center justify-center px-4 py-2 cursor-pointer border border-transparent border-primary-500 text-primary-500 font-semibold text-xs  uppercase tracking-widest hover:bg-primary-500 hover:text-white transition ease-in-out duration-150"
@@ -133,7 +134,7 @@
                     </div>
                 @else
                     <span class="text-red-500 opacity-50">Ningun lote seleccionado</span>
-                @endif
+                @endif 
             </div>
             {{-- end info batch --}}
             {{-- detial sale --}}
@@ -172,20 +173,20 @@
                                     @foreach ($cart_session_ as $id => $item)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $item['name'] }}
+                                                {{-- {{ $item['name'] }} --}}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                <x-jet-input class="rounded-fx" type="number"
-                                                    name="quantity_product"
-                                                    wire:model="cart_session_.{{ $id }}.quantity" min="1"
-                                                    max="25" wire:keyup="updateQuantity({{ $id }})"
+                                                <x-jet-input class="rounded-fx" type="number" name="quantity_product"
+                                                    wire:model="cart_session_.{{ $id }}.quantity"
+                                                    min="1" max="25"
+                                                    wire:keyup="updateQuantity({{ $id }})"
                                                     wire:change="updateQuantity({{ $id }})" />
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                $ {{ $item['price'] }}
+                                                 {{ $item['price'] }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                $ {{ $item['subtotal'] }}
+                                                 {{ $item['subtotal'] }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-2xl ">
 
@@ -238,14 +239,13 @@
                                         Total:
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-right">
-                                        $ {{ $cart->total }}
+                                         {{ $cart->total }}
                                     </td>
                                 </tr>
                             </tfoot>
 
                         </table>
                     </div>
-
 
                 </div>
             </div>
@@ -271,24 +271,27 @@
 @push('custom-scripts')
     <script>
         document.addEventListener('livewire:load', function() {
+
             $('#select-client').select2();
             $('#select-client').on('change', function() {
-                @this.set('id_clients', this.value);
+                @this.set('client_id', this.value);
                 @this.showInfoClient()
             });
 
             $('#select-batchs').select2();
             $('#select-batchs').on('change', function() {
-                @this.set('id_batches', this.value);
+                @this.set('batche_id', this.value);
                 @this.showInfoBatch()
             });
 
             $('#select-sellers').select2();
             $('#select-sellers').on('change', function() {
-                @this.set('id_sellers', this.value);
+                @this.set('seller_id', this.value);
                 @this.showInfoSeller()
             });
 
         });
     </script>
 @endpush
+
+

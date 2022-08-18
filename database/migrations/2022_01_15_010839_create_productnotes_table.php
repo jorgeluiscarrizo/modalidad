@@ -15,16 +15,15 @@ class CreateProductnotesTable extends Migration
     {
         Schema::create('productnotes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_batches');
-            $table->unsignedBigInteger('id_notes');
+            $table->unsignedBigInteger('batche_id');
+            $table->unsignedBigInteger('note_id');
             $table->double('amount', 8, 2)->nullable();
             $table->double('price', 8, 2)->nullable();
             $table->double('subtotal', 8, 2)->nullable();
-            $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->foreign('id_batches')->references('id')->on('batches')->onDelete('cascade');
-            $table->foreign('id_notes')->references('id')->on('notes')->onDelete('cascade');
+            $table->foreign('batche_id')->references('id')->on('batches')->onDelete('cascade');
+            $table->foreign('note_id')->references('id')->on('notes')->onDelete('cascade');
         });
     }
 

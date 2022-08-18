@@ -12,7 +12,7 @@ class BatchUpdate extends Component
 {
     //batch
     public $batch;
-    public $id_products;
+    public $product_id;
     public $name;
     public $price;
     public $stock;
@@ -27,7 +27,7 @@ class BatchUpdate extends Component
 
         if ($this->batch) {
             //cargando datos de la batch
-            $this->id_products = $this->batch->id_products;
+            $this->product_id = $this->batch->product_id;
             $this->name = $this->batch->name;
             $this->price = $this->batch->price;
             $this->stock = $this->batch->stock;
@@ -41,7 +41,7 @@ class BatchUpdate extends Component
     }
     protected $rules = [
         //restriccion batch
-        'id_products' => 'required',
+        'product_id' => 'required',
         'name' => 'required|max:20|min:2|unique:batches,name',
         'price' => 'required',
         'stock' => 'required',
@@ -55,7 +55,7 @@ class BatchUpdate extends Component
         
         //Actualizando registro
         $this->batch->update([
-            'id_products' => $this->id_products,
+            'product_id' => $this->product_id,
             'name' => $this->name,
             'price' => $this->price,
             'stock' => $this->stock,

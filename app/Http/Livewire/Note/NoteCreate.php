@@ -19,15 +19,16 @@ class NoteCreate extends Component
 
 
     public $clients;
-    public $id_clients;
+    public $client_id;
+    //Cliente seleccionado
     public $client;
 
     public $sellers;
-    public $id_sellers;
+    public $seller_id;
     public $seller;
 
     public $batchs;
-    public $id_batches;
+    public $batche_id;
     public $batch;
 
     public $cart;
@@ -38,7 +39,8 @@ class NoteCreate extends Component
     {
         $this->clients = Client::all()->where('state', 'ACTIVE');
         $this->sellers = Seller::all()->where('state', 'ACTIVE');
-        $this->batchs = Batch::where('state', 'ACTIVE')->with('product')->get();
+        //$this->batchs = Batch::where('state', 'ACTIVE')->with('product')->get();
+        $this->batchs = Batch::all()->where('state', 'ACTIVE');
         $this->cart = new Cart();
         //Limpiando carrito
         session()->forget('cart');
@@ -53,7 +55,7 @@ class NoteCreate extends Component
 
     //reglas para validacion
     protected $rules = [
-        'id_clients' => 'required',
+        'client_id' => 'required',
     ];
 
     //Metodo que llama el formulario
@@ -68,19 +70,19 @@ class NoteCreate extends Component
                 'total' => $this->cart->total,
                 //encriptando slug
                 'slug' => Str::slug(bcrypt(time())),
-                'id_clients' => $this->id_clients,
-                'id_sellers' => $this->id_sellers,
+                'client_id' => $this->client_id,
+                'seller_id' => $this->seller_id,
                 'state' => 'ACTIVE',
             ]);
             $cart_session_ = session()->get('cart');
             foreach ($cart_session_ as $id_ => $item) {
-
-                SaleDetail::create([
-                    'quantity' => $item['quantity'],
+                //dd($item,'id ',$id_,'id nota',$note->id,);
+                Productnote::create([
+                    'amount' => $item['quantity'],
                     'price' => $item['price'],
                     'subtotal' => $item['subtotal'],
-                    'id_batches' => $id_,
-                    'id_notes' => $note->id,
+                    'batche_id' => $id_,
+                    'note_id' => $note->id,
                 ]);
             }
             $this->cleanInputs();
@@ -147,19 +149,20 @@ class NoteCreate extends Component
 
     public function showInfoClient()
     {
-        $this->client = Client::find($this->id_clients);
+        $this->client = Client::find($this->client_id);
+        //dd($this->client);
         //Limpiando carrito
         session()->forget('cart');
     }
     public function showInfoSeller()
     {
-        $this->seller = Seller::find($this->id_sellers);
+        $this->seller = Seller::find($this->seller_id);
         //Limpiando carrito
         session()->forget('cart');
     }
     public function showInfoBatch()
     {
-        $this->batch = Batch::find($this->id_batches);
+        $this->batch = Batch::find($this->batche_id);
     }
 
     //Funciones para carrito de compras
@@ -180,7 +183,7 @@ class NoteCreate extends Component
         $price = 0;
         $price = $this->batch->price;
 
-        $this->cart->addProductCart($this->id_batches, 1, $price);
+        $this->cart->addProductCart($this->batche_id, 1, $price);
         $this->toastAddProduct($this->batch->name);
     }
     public function updateQuantity($id)

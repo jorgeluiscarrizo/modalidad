@@ -14,7 +14,7 @@
                 <div class="">
                     Productos
                 </div>
-                <select wire:model="id_products" wire:change="onChangeSelectProduct"
+                <select wire:model="product_id" wire:change="onChangeSelectProduct"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
                     required>
 
@@ -27,7 +27,7 @@
                     @endforelse
                 </select>
 
-                @error('id_products')
+                @error('product_id')
                     <p class="text-red-500 font-semibold my-2">
                         {{ $message }}
                     </p>

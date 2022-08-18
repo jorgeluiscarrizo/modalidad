@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Route extends Model
 {
     protected $fillable = [
-        'id_cities',
-        'id_goals',
+        'citi_id',
+        'goal_id',
         'neighborhood',
         'slug',
         'state',

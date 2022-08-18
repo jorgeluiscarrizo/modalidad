@@ -30,7 +30,7 @@ class ClientDataTable extends LivewireDatatable
         
         return (Client::query()
         ->join('types', function ($join) {
-            $join->on('types.id', '=', 'clients.id_type');
+            $join->on('types.id', '=', 'clients.type_id');
         }));        
     }
     

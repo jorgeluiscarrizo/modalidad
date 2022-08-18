@@ -12,8 +12,8 @@ use Livewire\WithFileUploads;
 class RouteCreate extends Component
 {
     public $route;
-    public $id_cities;
-    public $id_goals;
+    public $citi_id;
+    public $goal_id;
     public $state = "ACTIVE";
     public $neighborhood;
     public $slug;
@@ -39,8 +39,8 @@ class RouteCreate extends Component
     //reglas para validacion
     protected $rules = [
         //restriccion 
-        'id_cities' => 'required',
-        'id_goals' => 'required',
+        'citi_id' => 'required',
+        'goal_id' => 'required',
         'neighborhood' => 'required|max:255|min:3',
         'state' => 'required',
     ];
@@ -51,8 +51,8 @@ class RouteCreate extends Component
         $this->validate();
         //Creando registro route
         Route::create([
-            'id_cities' => $this->id_cities,
-            'id_goals' => $this->id_goals,
+            'citi_id' => $this->citi_id,
+            'goal_id' => $this->goal_id,
             'neighborhood' => $this->neighborhood,
             //encriptando slug
             'slug' => Str::slug(bcrypt(time())),
@@ -74,8 +74,8 @@ class RouteCreate extends Component
     //Funcion para limpiar imputs
     public function cleanInputs()
     {
-        $this->id_cities = "";
-        $this->id_goals = "";
+        $this->citi_id = "";
+        $this->goal_id = "";
         $this->neighborhood = "";     
     }
     //llamar ciudades

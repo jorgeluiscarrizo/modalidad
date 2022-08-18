@@ -44,6 +44,7 @@ use App\Http\Livewire\Batch\BatchDashboard;
 use App\Http\Livewire\Batch\BatchUpdate;
 //note
 use App\Http\Livewire\Note\NoteCreate;
+use App\Http\Livewire\Note\NoteDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,7 +108,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'language'], 'prefix'
     Route::get('batch-create', BatchCreate::class)->name('batch.create')->middleware('auth', 'role:admin');
     Route::get('batch-update/{slug}', BatchUpdate::class)->name('batch.update')->middleware('auth', 'role:admin');
     //Admin User
-    Route::get('note', NoteCreate::class)->name('note.create')->middleware('auth', 'role:admin');
+    Route::get('note', NoteDashboard::class)->name('note.dashboard')->middleware('auth', 'role:admin');
+    Route::get('note-create', NoteCreate::class)->name('note.create')->middleware('auth', 'role:admin');
     
 });
 

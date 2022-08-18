@@ -29,7 +29,6 @@ class ProductCreate extends Component
     protected $rules = [
         'name' => 'required|max:255|min:3',
     
-        'description' => 'required',
         'state' => 'required',
     ];
     

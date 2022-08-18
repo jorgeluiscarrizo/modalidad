@@ -12,8 +12,8 @@ use Livewire\WithFileUploads;
 class RouteUpdate extends Component
 {
     public $route;
-    public $id_cities;
-    public $id_goals;
+    public $citi_id;
+    public $goal_id;
     public $state;
     public $neighborhood;
     public $slug;
@@ -27,8 +27,8 @@ class RouteUpdate extends Component
 
         if ($this->route) {
             //cargando datos de la route
-            $this->id_cities = $this->route->id_cities;
-            $this->id_goals = $this->route->id_goals;
+            $this->citi_id = $this->route->citi_id;
+            $this->goal_id = $this->route->goal_id;
             $this->neighborhood = $this->route->neighborhood;
             $this->slug = $this->route->slug;
             $this->state = $this->route->state;
@@ -42,8 +42,8 @@ class RouteUpdate extends Component
     }
     protected $rules = [
         //restriccion route
-        'id_cities' => 'nullable',
-        'id_goals' => 'nullable',
+        'citi_id' => 'nullable',
+        'goal_id' => 'nullable',
         'neighborhood' => 'required|max:255|min:3',
         'state' => 'required',
     ];
@@ -56,8 +56,8 @@ class RouteUpdate extends Component
         //Actualizando registro
         $this->route->update([
 
-            'id_cities' => $this->id_cities,
-            'id_goals' => $this->id_goals,
+            'citi_id' => $this->citi_id,
+            'goal_id' => $this->goal_id,
             'neighborhood' => $this->neighborhood,
             'slug' => Str::slug(bcrypt(time())),
             'state' => $this->state,
