@@ -13,9 +13,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class ProductDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = Product::class;
-    public $hideable = 'select';
 
     public function builder()
     {
@@ -27,8 +25,6 @@ class ProductDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('name')
                 ->searchable()
@@ -46,11 +42,6 @@ class ProductDataTable extends LivewireDatatable
                     'ACTIVE',
                     'INACTIVE'
                 ]),
-
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
 
                 
             Column::callback(['id', 'slug', 'name'], function ($id, $slug, $name) {

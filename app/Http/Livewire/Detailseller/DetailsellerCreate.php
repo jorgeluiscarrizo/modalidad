@@ -43,7 +43,7 @@ class DetailsellerCreate extends Component
         'seller_id' => 'required',
         'route_id' => 'required',
         'date_i' => 'required',
-        'date_f' => 'required',
+        'date_f' => 'required|after:date_i|after:date_i',
         'state' => 'required',
     ];
     //Metodo que llama el formulario

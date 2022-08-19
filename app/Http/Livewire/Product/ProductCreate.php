@@ -27,8 +27,7 @@ class ProductCreate extends Component
 
     //Reglas para validar
     protected $rules = [
-        'name' => 'required|max:255|min:3',
-    
+        'name' => 'required|unique:products,name',
         'state' => 'required',
     ];
     

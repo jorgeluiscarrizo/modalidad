@@ -44,8 +44,10 @@ class DetailsellerUpdate extends Component
     }
     protected $rules = [
         //restriccion detailseller
-        'seller_id' => 'nullable',
-        'route_id' => 'nullable',
+        'seller_id' => 'required',
+        'route_id' => 'required',
+        'date_i' => 'required',
+        'date_f' => 'required|after:date_i|after:date_i',
         'state' => 'required',
     ];
     public function submit()

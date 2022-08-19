@@ -13,9 +13,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class GoalDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = Goal::class;
-    public $hideable = 'select';
 
     public function builder()
     {
@@ -27,8 +25,6 @@ class GoalDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
                 Column::name('date_i')
                 ->searchable()
@@ -55,10 +51,6 @@ class GoalDataTable extends LivewireDatatable
                     'INACTIVE'
                 ]),
 
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
 
             Column::callback(['id', 'slug', 'amount'], function ($id, $slug, $amount) {
                 return view('livewire.goal.goal-table-actions', ['id' => $id, 'slug' => $slug, 'amount' => $amount]);

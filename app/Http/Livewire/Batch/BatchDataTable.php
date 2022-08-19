@@ -14,16 +14,12 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class BatchDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = Batch::class;
-
-    public $hideable = 'select';
-    public $complex = true;
 
     public function builder()
     {
         //return Batch::query();
-        return (Batch::query()
+        return (Batch::query()->where('batches.state', '!=', 'DELETED')
         ->join('products', function ($join) {
             $join->on('products.id', '=', 'batches.product_id');
         }));    
@@ -43,6 +39,10 @@ class BatchDataTable extends LivewireDatatable
                 Column::name('price')
                 ->searchable()
                 ->label('Precio'),
+
+                Column::name('stock')
+                ->searchable()
+                ->label('Cantidad'),
 
             Column::name('products.description')
                 ->searchable()

@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="font-semibold text-xl text-gray-800 leading-tight">
-            Registrar lote
+            Registrar Lote
         </div>
     </x-slot>
     <div class="container m-auto bg-white mt-5 rounded-md">
@@ -13,7 +13,7 @@
             {{-- select product --}}
             <div>
                 <div class="">
-                    Productos
+                    <i class="fas fa-hand-pointer"> Seleccionar Producto </i>
                 </div>
                 <select wire:model="product_id" wire:change="onChangeSelectProduct"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
@@ -35,10 +35,10 @@
                 @enderror
             </div>
             {{-- end product --}}
-            
+
             {{-- name --}}
             <div class="">
-                Nombre
+                <i class="fas fa-pencil-alt"> Nombre</i>
             </div>
             <x-jet-input type="text" placeholder="Nombre" wire:model="name" class="mt-1 block w-full rounded-full"
                 required />
@@ -51,10 +51,10 @@
 
             {{-- price --}}
             <div class="">
-                
+                <i class="fas fa-money-bill"> Precio</i>
             </div>
-            <x-jet-input type="number" step="0.01" placeholder="Precio" wire:model="price" class="mt-1 block w-full rounded-full"
-                required />
+            <x-jet-input type="number" step="0.01" placeholder="Precio" wire:model="price"
+                class="mt-1 block w-full rounded-full" required />
             @error('price')
                 <p class="text-red-500 font-semibold my-2">
                     {{ $message }}
@@ -64,9 +64,10 @@
 
             {{-- stock --}}
             <div class="">
-                Cantidad
+                <i class="fas fa-box"> Cantidad</i>
+
             </div>
-            <x-jet-input type="number" step="0.01" placeholder="Cantidad" wire:model="stock" class="mt-1 block w-full rounded-full"
+            <x-jet-input type="number" placeholder="Cantidad" wire:model="stock" class="mt-1 block w-full rounded-full"
                 required />
             @error('stock')
                 <p class="text-red-500 font-semibold my-2">
@@ -74,9 +75,10 @@
                 </p>
             @enderror
             {{-- end stock --}}
-        
+
             {{-- state --}}
-            <x-jet-label class="mt-2" for="state" value="Estado" />
+            <x-jet-label class="mt-4" for="state" />
+            <i class="fas fa-check-circle"> Estado</i>
             <div class="mt-4 space-y-2">
                 <div class="flex items-center">
                     <input wire:model="state" value="ACTIVE" type="radio"

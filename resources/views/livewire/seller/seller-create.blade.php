@@ -14,17 +14,44 @@
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
 
                     {{-- name --}}
-                    <x-jet-label for="name" value="Nombre" />
+                    <x-jet-label for="name" />
+                    <label for="name"><i class="fas fa-user-edit"> Nombre</i> </label>
                     <x-jet-input seller="text" placeholder="Nombre" wire:model="name" wire:keyup="generateSlug"
                         class="mt-1 block w-full rounded-fx" required />
-                    @error('name')
+                    @error('Nombre')
                         <p class="text-red-500 font-semibold my-2">
                             {{ $message }}
                         </p>
                     @enderror
                     {{-- end name --}}
 
-                    <x-jet-label class="mt-2" for="state" value="Estado" />
+                    {{-- ci --}}
+                    <x-jet-label for="ci" />
+                    <label for="ci"> <i class="fas fa-address-card"> Número de cédula</i></label>
+                    <x-jet-input seller="text" placeholder="Número de cédula" wire:model="ci"
+                        class="mt-1 block w-full rounded-fx" required />
+                    @error('ci')
+                        <p class="text-red-500 font-semibold my-2">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                    {{-- end ci --}}
+
+                    {{-- cell --}}
+                    <x-jet-label for="cell" />
+                    <i class="fas fa-mobile"> Número Celular</i>
+                    <x-jet-input seller="text" placeholder="Número Celular" wire:model="cell"
+                        class="mt-1 block w-full rounded-fx" required />
+                    @error('cell')
+                        <p class="text-red-500 font-semibold my-2">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                    {{-- end cell --}}
+                    {{-- state --}}
+
+                    <x-jet-label class="mt-4" for="state" />
+                    <i class="fas fa-check-circle"> Estado</i>
                     <div class="mt-4 space-y-2">
                         <div class="flex items-center">
                             <input wire:model="state" value="ACTIVE" type="radio"
@@ -42,7 +69,7 @@
                         </div>
                     </div>
                     {{-- end state --}}
-                    
+
                     {{-- all errors --}}
                     @if ($errors->any())
                         <div class="bg-red-100 rounded-md text-red-500 p-2 font-semibold my-2">

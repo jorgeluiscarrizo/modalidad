@@ -13,9 +13,10 @@ class SellerCreate extends Component
 
     public $seller;
     public $name;
+    public $ci;
+    public $cell;
     public $slug;
     public $state = 'ACTIVE';
-
 
     ///Funcion para generar Slug para la URL
     public function generateSlug()
@@ -26,6 +27,8 @@ class SellerCreate extends Component
     //Reglas para validar
     protected $rules = [
         'name' => 'required|max:255|min:3',
+        'ci' => 'numeric|required|unique:sellers,ci',
+        'cell' => 'numeric|required',
         'state' => 'required',
     ];
     
@@ -35,6 +38,8 @@ class SellerCreate extends Component
         $this->validate();
         $this->seller = Seller::create([
             'name' => $this->name, 
+            'ci' => $this->ci, 
+            'cell' => $this->cell, 
             'slug' => Str::slug(bcrypt(time())),
             'state' => $this->state,
         ]);

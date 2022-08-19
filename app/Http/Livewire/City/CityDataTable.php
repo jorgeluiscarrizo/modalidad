@@ -13,9 +13,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class CityDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = City::class;
-    public $hideable = 'select';
 
     public function builder()
     {
@@ -27,8 +25,6 @@ class CityDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('name')
                 ->searchable()
@@ -43,12 +39,6 @@ class CityDataTable extends LivewireDatatable
                     'INACTIVE'
                 ]),
 
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
-
-                
             Column::callback(['id', 'slug', 'name'], function ($id, $slug, $name) {
                 return view('livewire.city.city-table-actions', ['id' => $id, 'slug' => $slug, 'name' => $name]);
             })->label('Opciones')

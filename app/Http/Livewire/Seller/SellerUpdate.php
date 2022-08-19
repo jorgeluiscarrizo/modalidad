@@ -14,8 +14,10 @@ class SellerUpdate extends Component
 
     public $seller;
     public $name;
+    public $ci;
+    public $cell;
     public $slug;
-    public $state;
+    public $state = 'ACTIVE';
 
     //Constructor
     public function mount($slug)
@@ -23,6 +25,8 @@ class SellerUpdate extends Component
         $this->seller = Seller::where('slug', $slug)->firstOrFail();
         if ($this->seller) {
             $this->name = $this->seller->name;
+            $this->ci = $this->seller->ci;
+            $this->cell = $this->seller->cell;
             $this->slug = $this->seller->slug;
             $this->state = $this->seller->state;
         }
@@ -38,16 +42,20 @@ class SellerUpdate extends Component
     }
     protected $rules = [
         'name' => 'required|max:255|min:3',
+        'ci' => 'numeric|required|unique:sellers,ci',
+        'cell' => 'numeric|required',
         'state' => 'required',
     ];
 
     public function submit()
     {
         //Modificando regla para actualizar
-        $this->rules['slug'] = 'required|unique:types,slug,' . $this->seller->id;
+        $this->rules['slug'] = 'required|unique:sellers,slug,' . $this->seller->id;
         $this->validate();
         $this->seller->update([
             'name' => $this->name,
+            'ci' => $this->ci, 
+            'cell' => $this->cell, 
             'slug' => Str::slug(bcrypt(time())),
             'state' => $this->state,
         ]);

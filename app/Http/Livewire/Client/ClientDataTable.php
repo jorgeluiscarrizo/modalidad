@@ -16,30 +16,17 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
  
 class ClientDataTable extends LivewireDatatable
 {
-   
-    public $exportable = true;
     public $model = Client::class;
-    
-    public $hideable = 'select';
-    public $complex = true;
-    
-   
-    
     public function builder()
-    {
-        
-        return (Client::query()
-        ->join('types', function ($join) {
-            $join->on('types.id', '=', 'clients.type_id');
-        }));        
+    {       
+        return Client::query()
+            ->where('clients.state', '!=', 'DELETED')
+            ->join('types', 'types.id', '=', 'clients.type_id');
     }
-    
     
     public function columns()
     { 
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('types.name')
                 ->searchable()
@@ -62,11 +49,6 @@ class ClientDataTable extends LivewireDatatable
                     'ACTIVE',
                     'INACTIVE'
                 ]),
-
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
  
             Column::callback(['id', 'name', 'slug'], function ($id, $name, $slug) {
                 //dd($id);
@@ -76,14 +58,14 @@ class ClientDataTable extends LivewireDatatable
         ];
     }
     public $idDelet;
-    public function toastConfirmDelet($id)
+    public function toastConfirmDelet($name, $id )
     {
         $this->idDelet = $id;
         $this->confirm(__('¿Estas seguro que seas eliminar el registro?'), [
             'icon' => 'warning',
             'position' =>  'center',
             'toast' =>  false,
-            'text' =>  'Código de Transacción '.$id,
+            'text' =>  $name,
             'confirmButtonText' =>  'Si',
             'showConfirmButton' =>  true,
             'showCancelButton' => true,

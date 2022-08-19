@@ -112,14 +112,16 @@
                     <i class="fas fa-shopping-bag"></i> {{ 'Productos' }}
                 </x-a-sidenav>
                 {{-- nota --}}
-                <x-a-sidenav href="{{ route('note.dashboard') }}" :active="request()->routeIs('note.dashboard')">
-                    <i class="fas fa-people-carry"></i> Notas
+                <x-a-sidenav href="{{ route('note.dashboard') }}" :active="request()->routeIs('note.dashboard')"
+                    class="text-l font-semibold tracking-widest text-primary-500 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+                    <i class="fas fa-clipboard"></i>Notas de Venta
                 </x-a-sidenav>
                 {{-- lote --}}
                 <x-a-sidenav href="{{ route('batch.dashboard') }}" :active="request()->routeIs('batch.dashboard') ||
                     request()->routeIs('batch.create') ||
-                    request()->routeIs('batch.update')">
-                    <i class="fas fa-users-cog"></i> Lotes
+                    request()->routeIs('batch.update')"
+                    class="text-l font-semibold tracking-widest text-primary-500 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+                    <i class="fas fa-boxes"></i>Lotes
                 </x-a-sidenav>
 
                 <hr class=" my-2">

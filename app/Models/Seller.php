@@ -9,6 +9,8 @@ class Seller extends Model
 {
     protected $fillable = [
         'name',
+        'ci',
+        'cell',
         'slug',
         'state',
     ];

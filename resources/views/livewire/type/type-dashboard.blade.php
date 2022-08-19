@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ 'Lista de Tipos' }}
+            {{ 'Lista de los Tipos de Clientes' }}
         </div>
     </x-slot>
 

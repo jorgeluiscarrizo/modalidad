@@ -15,7 +15,9 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name');
+            $table->string('ci');
+            $table->string('cell');
             $table->string('slug')->inique();
             $table->timestamps();
             $table->enum('state', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');

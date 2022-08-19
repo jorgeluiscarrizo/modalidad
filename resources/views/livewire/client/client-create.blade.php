@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="font-semibold text-xl text-gray-800 leading-tight">
-           Registrar Cliente
+            Registrar Cliente
         </div>
     </x-slot>
 
@@ -14,7 +14,8 @@
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
 
                     {{-- name --}}
-                    <x-jet-label for="name" value="Nombre" />
+                    <x-jet-label for="name" />
+                    <i class="fas fa-pencil-alt"> Nombre</i>
                     <x-jet-input type="text" placeholder="Nombre" wire:model="name" wire:keyup="generateSlug"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('name')
@@ -24,34 +25,35 @@
                     @enderror
                     {{-- end name --}}
 
-        {{-- select unread_type --}}
-        <div>
-            <div class="">
-                Seleccionar Tipo
-            </div>
-            <select wire:model="type_id" wire:change="onChangeSelectType"
-                class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
-                required>
+                    {{-- select unread_type --}}
+                    <div>
+                        <div class="">
+                            <i class="fas fa-hand-pointer"> Seleccionar Tipo Cliente </i>
+                        </div>
+                        <select wire:model="type_id" wire:change="onChangeSelectType"
+                            class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
+                            required>
 
-                <option selected></option>
-                @forelse ($clienttypes as $type)
-                    <option value="{{ $type->id }}">
-                        {{ $type->name }}</option>
-                @empty
-                    <option disabled>Sin registros</option>
-                @endforelse
-            </select>
+                            <option selected></option>
+                            @forelse ($clienttypes as $type)
+                                <option value="{{ $type->id }}">
+                                    {{ $type->name }}</option>
+                            @empty
+                                <option disabled>Sin registros</option>
+                            @endforelse
+                        </select>
 
-            @error('type_id')
-                <p class="text-red-500 font-semibold my-2">
-                    {{ $message }}
-                </p>
-            @enderror
-        </div>
-        {{-- end unread_type --}}
+                        @error('type_id')
+                            <p class="text-red-500 font-semibold my-2">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                    {{-- end unread_type --}}
 
                     {{-- num_cell --}}
-                    <x-jet-label for="num_cell" value="Numero Celular" />
+                    <x-jet-label for="num_cell" />
+                    <i class="fas fa-mobile"> Numero Celular</i>
                     <x-jet-input type="text" placeholder="Numero Celular" wire:model="num_cell"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('num_cell')
@@ -61,9 +63,10 @@
                     @enderror
                     {{-- end num_cell --}}
 
-                    {{--Estado--}}
+                    {{-- Estado --}}
 
-                    <x-jet-label class="mt-2" for="state" value="Estado" />
+                    <x-jet-label class="mt-4" for="state"/>
+                    <i class="fas fa-check-circle"> Estado</i>
                     <div class="mt-4 space-y-2">
                         <div class="flex items-center">
                             <input wire:model="state" value="ACTIVE" type="radio"
@@ -81,7 +84,7 @@
                         </div>
                     </div>
                     {{-- end state --}}
-                    
+
                     {{-- all errors --}}
                     @if ($errors->any())
                         <div class="bg-red-100 rounded-md text-red-500 p-2 font-semibold my-2">

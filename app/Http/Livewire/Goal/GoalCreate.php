@@ -29,7 +29,7 @@ class GoalCreate extends Component
     //Reglas para validar
     protected $rules = [
         'date_i' => 'required',
-        'date_f' => 'required',
+        'date_f' => 'required|after:date_i|after:date_i',
         'amount' => 'required',
         'bonus' => 'required',
         'state' => 'required',

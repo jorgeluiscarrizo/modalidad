@@ -13,10 +13,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class SellerDataTable extends LivewireDatatable
 {
-     public $exportable = true;
     public $model = Seller::class;
-    public $hideable = 'select';
-
     public function builder()
     {
         return Seller::query()->where('state', '!=', 'DELETED');
@@ -27,12 +24,18 @@ class SellerDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('name')
                 ->searchable()
                 ->label('Nombre'),
+
+                Column::name('ci')
+                ->searchable()
+                ->label('# de cédula'),
+
+                Column::name('cell')
+                ->searchable()
+                ->label('# celular'),
 
             Column::callback(['state'], function ($state) {
                 return view('components.datatables.state-data-table', ['state' => $state]);
@@ -42,12 +45,6 @@ class SellerDataTable extends LivewireDatatable
                     'ACTIVE',
                     'INACTIVE'
                 ]),
-
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
-
                 
             Column::callback(['id', 'slug', 'name',], function ($id, $slug, $name) {
                 return view('livewire.seller.seller-table-actions', ['id' => $id, 'slug' => $slug, 'name' => $name]);

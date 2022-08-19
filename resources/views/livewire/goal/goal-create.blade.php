@@ -13,7 +13,8 @@
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
 
                     {{-- date_i --}}
-                    <x-jet-label for="date_i" value="Fecha Inicio" />
+                    <x-jet-label for="date_i" />
+                    <i class="fas fa-calendar"> Fecha Inicio</i>
                     <x-jet-input type="date" placeholder="Fecha Inicio" wire:model="date_i"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('date_i')
@@ -24,7 +25,8 @@
                     {{-- end date_i --}}
 
                     {{-- date_f --}}
-                    <x-jet-label for="date_f" value="Fecha final" />
+                    <x-jet-label for="date_f" />
+                    <i class="fas fa-calendar"> Fecha final</i>
                     <x-jet-input type="date" placeholder="Fecha final" wire:model="date_f"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('date_f')
@@ -35,7 +37,8 @@
                     {{-- end date_f --}}
 
                     {{-- amount --}}
-                    <x-jet-label for="amount" value="Monto" />
+                    <x-jet-label for="amount" />
+                    <i class="fas fa-money-bill"> Monto</i>
                     <x-jet-input type="number" step="0.01" placeholder="Monto" wire:model="amount"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('amount')
@@ -46,7 +49,8 @@
                     {{-- end amount --}}
 
                     {{-- bonus --}}
-                    <x-jet-label for="bonus" value="Bono" />
+                    <x-jet-label for="bonus" />
+                    <i class="fas fa-money-bill"> Bono</i>
                     <x-jet-input type="number" step="0.01" placeholder="Bono" wire:model="bonus"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('bonus')
@@ -55,8 +59,9 @@
                         </p>
                     @enderror
                     {{-- end bonus --}}
-                    {{--Estado--}}
-                    <x-jet-label class="mt-2" for="state" value="Estado" />
+                    {{-- Estado --}}
+                    <x-jet-label class="mt-4" for="state" />
+                    <i class="fas fa-check-circle"> Estado</i>
                     <div class="mt-4 space-y-2">
                         <div class="flex items-center">
                             <input wire:model="state" value="ACTIVE" type="radio"
@@ -74,7 +79,7 @@
                         </div>
                     </div>
                     {{-- end state --}}
-                    
+
                     {{-- all errors --}}
                     @if ($errors->any())
                         <div class="bg-red-100 rounded-md text-red-500 p-2 font-semibold my-2">

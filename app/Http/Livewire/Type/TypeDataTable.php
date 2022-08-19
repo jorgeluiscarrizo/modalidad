@@ -14,12 +14,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class TypeDataTable extends LivewireDatatable
 {
-
-    public $exportable = true;
     public $model = Type::class;
-    
-    public $hideable = 'select';
-
     public function builder()
     {
         
@@ -31,8 +26,6 @@ class TypeDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('name')
                 ->searchable()
@@ -46,12 +39,6 @@ class TypeDataTable extends LivewireDatatable
                     'ACTIVE',
                     'INACTIVE'
                 ]),
-
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
-
                 
             Column::callback(['id', 'slug', 'name'], function ($id, $slug, $name) {
                 return view('livewire.type.type-table-actions', ['id' => $id, 'slug' => $slug, 'name' => $name]);

@@ -12,7 +12,7 @@
 
             {{-- name --}}
             <div class="mt-4 text-sm">
-                <label for="name"><i class="fas fa-user-edit"></i> Nombre completo</label>
+                <label for="name"><i class="fas fa-user-edit"> Nombre completo</i> </label>
             </div>
             <x-jet-input type="text" placeholder="Nombre completo" wire:model="name" class="mt-1 block w-full rounded-full"
                 required />
@@ -25,7 +25,7 @@
             
             {{-- email --}}
             <div class="mt-4 text-sm">
-                <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
+                <label for="email"><i class="fas fa-envelope"> Correo electrónico</i> </label>
             </div>
             <x-jet-input type="email" placeholder="Correo electrónico" wire:model="email"
                 class="mt-1 block w-full rounded-full" />
@@ -37,7 +37,7 @@
             {{-- end email --}}
             {{-- password --}}
             <div class="mt-4 text-sm">
-                <label for="password"><i class="fas fa-file-invoice"></i> Password</label>
+                <label for="password"><i class="fas fa-file-invoice"> Password</i> </label>
             </div>
             <x-jet-input type="password" wire:model="password" class="mt-1 block w-full rounded-full" />
             @error('password')
@@ -49,7 +49,7 @@
            {{-- select role --}}
            <div>
             <div class="">
-                Seleccionar Rol
+                <i class="fas fa-hand-pointer"> Seleccionar Rol </i>
             </div>
             <select wire:model="role_id" wire:change="onChangeSelectRole"
                 class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-fx rounded-full"
@@ -73,7 +73,8 @@
         {{-- end select role --}}
 
             {{-- state --}}
-            <x-jet-label class="mt-4" for="state" value="Estado" />
+            <x-jet-label class="mt-4" for="state"/>
+            <i class="fas fa-check-circle"> Estado</i>
             <div class="mt-4 space-y-2">
                 <div class="flex items-center">
                     <input wire:model="state" value="ACTIVE" type="radio"

@@ -41,7 +41,7 @@ class ClientCreate extends Component
         //restriccion 
         'type_id' => 'required',
         'name' => 'required|max:255|min:3',
-        'num_cell' => 'required|regex:/^([0-9\s-+()]*)$/|min:8|max:10',
+        'num_cell' => 'required|min:8|max:10',
         'state' => 'required',
     ];
     //Metodo que llama el formulario

@@ -11,7 +11,7 @@
 
             <div wire:ignore class="my-2">
                 <div class="">
-                    Cliente
+                    <i class="fas fa-hand-pointer"> Seleccionar Cliente </i>
                 </div>
                 <select id="select-client" wire:model="client_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
@@ -50,7 +50,7 @@
             {{-- select seller --}}
             <div wire:ignore class="my-2">
                 <div class="">
-                    Vendedor
+                    <i class="fas fa-hand-pointer"> Seleccionar Vendedor </i>
                 </div>
                 <select id="select-sellers" wire:model="seller_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
@@ -86,7 +86,7 @@
             {{-- select batch --}}
             <div wire:ignore class="my-2">
                 <div class="">
-                    Lote
+                    <i class="fas fa-hand-pointer"> Seleccionar Lote </i>
                 </div>
                 <select id="select-batchs" wire:model="batche_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"

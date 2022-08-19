@@ -17,15 +17,11 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class RouteDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = Route::class;
     
-    public $hideable = 'select';
-    public $complex = true;
-
     public function builder()
     {
-        return (Route::query()
+        return (Route::query()->where('routes.state', '!=', 'DELETED')
         ->join('cities', function ($join) {
             $join->on('cities.id', '=', 'routes.citi_id',);
         })
@@ -36,8 +32,6 @@ class RouteDataTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
 
             Column::name('cities.name')
                 ->searchable()
@@ -61,11 +55,6 @@ class RouteDataTable extends LivewireDatatable
                     'ACTIVE',
                     'INACTIVE'
                 ]),
-
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
  
             Column::callback(['id', 'neighborhood', 'slug'], function ($id, $neighborhood, $slug) {
                 //dd($id);

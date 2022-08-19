@@ -10,17 +10,20 @@ use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class NoteDataTable extends LivewireDatatable
 {
-    public $exportable = true;
     public $model = Note::class;
     public $productnotes;
-    public $batch;
-    public $hideable = 'select';
     //public $complex = true;
 
     public function builder()
     {
         //return Note::query();
-        return Note::query()->where('state', '!=', 'DELETED');
+        return Note::query()->where('notes.state', '!=', 'DELETED')
+        ->join('sellers', function ($join) {
+            $join->on('sellers.id', '=', 'notes.seller_id',);
+        })
+        ->join('clients', function ($join) {
+            $join->on('clients.id', '=', 'notes.client_id');
+        });
     }
 
     public function columns()
@@ -29,6 +32,14 @@ class NoteDataTable extends LivewireDatatable
             Column::name('id')
                 ->searchable()
                 ->label('Codigo'),
+
+                Column::name('sellers.name')
+                ->searchable()
+                ->label('Vendedor'),
+
+                Column::name('clients.name')
+                ->searchable()
+                ->label('Cliente'),
 
             Column::name('total')
                 ->searchable()

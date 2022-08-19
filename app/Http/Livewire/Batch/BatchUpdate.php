@@ -62,11 +62,23 @@ class BatchUpdate extends Component
             'state' => $this->state,            
         ]);
         //Llamando Alerta
-        $this->alert('success', 'Registro actualizado correctamente', [
-            'toast' => true,
-            'position' => 'top-end',
-
+        $this->confirm('Registro editado correctamente', [
+            'icon' => 'success',
+            'toast' => false,
+            'position' => 'center',
+            'confirmButtonText' =>  'Ok',
+            'showConfirmButton' => true,
+            'showCancelButton' => false,
+            'onConfirmed' => 'confirmed',
+            'confirmButtonColor' => '#A5DC86',
         ]);
+    }
+    protected $listeners = [
+        'confirmed',
+    ];
+    public function confirmed()
+    {
+        return redirect()->route('batch.dashboard');
     }
     public function onChangeSelectProduct()
     {

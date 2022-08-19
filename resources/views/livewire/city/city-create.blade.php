@@ -14,7 +14,8 @@
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
 
                     {{-- name --}}
-                    <x-jet-label for="name" value="Nombre" />
+                    <x-jet-label for="name"  />
+                    <i class="fas fa-pencil-alt"> Nombre</i>
                     <x-jet-input city="text" placeholder="Nombre" wire:model="name" wire:keyup="generateSlug"
                         class="mt-1 block w-full rounded-fx" required />
                     @error('name')
@@ -24,7 +25,8 @@
                     @enderror
                     {{-- end name --}}
                    {{-- state --}}
-                   <x-jet-label class="mt-2" for="state" value="Estado" />
+                   <x-jet-label class="mt-4" for="state" />
+                   <i class="fas fa-check-circle"> Estado</i>
                    <div class="mt-4 space-y-2">
                        <div class="flex items-center">
                            <input wire:model="state" value="ACTIVE" type="radio"

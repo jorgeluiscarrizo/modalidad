@@ -14,26 +14,21 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class UserDataTable extends LivewireDatatable
 {
-
-    public $exportable = true;
-
     public $model = User::class;
 
     public function builder()
     {
-        
+
         return User::query()
-        ->where('state', '!=', 'DELETED')
-        ->join('role_user', 'users.id', '=', 'role_user.user_id')
+            ->where('state', '!=', 'DELETED')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')
             ->join('roles', 'roles.id', '=', 'role_user.role_id');
     }
 
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->label('ID'),
-
+            
             Column::name('name')
                 ->searchable()
                 ->label('Nombre'),
@@ -45,7 +40,6 @@ class UserDataTable extends LivewireDatatable
                 ->searchable()
                 ->label('Correo'),
 
-
             Column::callback(['state'], function ($state) {
                 return view('components.datatables.state-data-table', ['state' => $state]);
             })
@@ -55,13 +49,8 @@ class UserDataTable extends LivewireDatatable
                     'INACTIVE'
                 ]),
 
-            DateColumn::name('created_at')
-                ->label('Creado')
-                ->format('d/m/Y h:i:s')
-                ->filterable(),
-
-            Column::callback(['id', 'name'], function ( $id, $name) {
-                return view('livewire.user.user-table-actions', [ 'id'=> $id, 'name' => $name]);
+            Column::callback(['id', 'name'], function ($id, $name) {
+                return view('livewire.user.user-table-actions', ['id' => $id, 'name' => $name]);
             })->label(__('labeltables.actions'))
 
         ];
@@ -75,7 +64,7 @@ class UserDataTable extends LivewireDatatable
             'icon' => 'warning',
             'position' =>  'center',
             'toast' =>  false,
-            'text' =>  'Usuario '.$name,
+            'text' =>  'Usuario ' . $name,
             'confirmButtonText' =>  'Si',
             'showConfirmButton' =>  true,
             'showCancelButton' => true,

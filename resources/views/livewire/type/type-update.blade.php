@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar Tipo') }}
+            {{ __('Editar Tipo de Cliente') }}
         </div>
     </x-slot>
 
@@ -11,7 +11,8 @@
             @slot('content')
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
                      {{-- name --}}
-                     <x-jet-label for="name" value="Nombre" />
+                     <x-jet-label for="name"/>
+                     <i class="fas fa-pencil-alt"> Nombre</i>
                      <x-jet-input type="text" placeholder="Nombre" wire:model="name" wire:keyup="generateSlug"
                          class="mt-1 block w-full rounded-fx" required />
                      @error('name')
@@ -20,37 +21,27 @@
                          </p>
                      @enderror
                      {{-- end name --}}
-
-                    {{-- slug --}}
-                    <x-jet-label class="mt-4 p-2 block text-gray-900 bg-gray-100 w-full rounded-md">
-                        URL (slug) : <span class="font-mono font-semibold">{{ $slug }}</span>
-                    </x-jet-label>
-                    @error('slug')
-                        <p class="text-red-500 font-semibold my-2">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                    {{-- end slug --}}
-
-                    {{-- state --}}
-                    <x-jet-label class="mt-2" for="state" value="{{ __('Estado') }}" />
-                    <div class="mt-4 space-y-2">
-                        <div class="flex items-center">
-                            <input wire:model="state" value="ACTIVE" type="radio"
-                                class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
-                            <label for="push_everything" class="ml-2 block text-sm font-medium text-gray-700">
-                                Activo
-                            </label>
-                        </div>
-                        <div class="flex items-center">
-                            <input wire:model="state" value="INACTIVE" type="radio"
-                                class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
-                            <label for="push_email" class="ml-2 block text-sm font-medium text-gray-700">
-                                Inactivo
-                            </label>
-                        </div>
-                    </div>
-                    {{-- end state --}}
+ 
+                     {{-- state --}}
+                     <x-jet-label class="mt-4" for="state"/>
+                     <i class="fas fa-check-circle"> Estado</i>
+                     <div class="mt-4 space-y-2">
+                         <div class="flex items-center">
+                             <input wire:model="state" value="ACTIVE" type="radio"
+                                 class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
+                             <label for="push_everything" class="ml-2 block text-sm font-medium text-gray-700">
+                                 Activo
+                             </label>
+                         </div>
+                         <div class="flex items-center">
+                             <input wire:model="state" value="INACTIVE" type="radio"
+                                 class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
+                             <label for="push_email" class="ml-2 block text-sm font-medium text-gray-700">
+                                 Inactivo
+                             </label>
+                         </div>
+                     </div>
+                     {{-- end state --}}
 
                     {{-- all errors --}}
                     @if ($errors->any())
