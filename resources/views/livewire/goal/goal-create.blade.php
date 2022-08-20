@@ -11,30 +11,32 @@
             @slot('content')
 
                 <form wire:submit.prevent="submit" class="lg:m-10 p-4">
+                        {{-- date_i --}}
+                        <div class="col-span-1 md:col-span-1">
+                        <x-jet-label for="date_i" />
+                        <i class="fas fa-calendar"> Fecha Inicio</i>
+                        <x-jet-input type="date" placeholder="Fecha Inicio" wire:model="date_i"
+                            class="mt-1 block w-full rounded-fx" required />
+                        @error('date_i')
+                            <p class="text-red-500 font-semibold my-2">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        
+                        {{-- end date_i --}}
 
-                    {{-- date_i --}}
-                    <x-jet-label for="date_i" />
-                    <i class="fas fa-calendar"> Fecha Inicio</i>
-                    <x-jet-input type="date" placeholder="Fecha Inicio" wire:model="date_i"
-                        class="mt-1 block w-full rounded-fx" required />
-                    @error('date_i')
-                        <p class="text-red-500 font-semibold my-2">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                    {{-- end date_i --}}
-
-                    {{-- date_f --}}
-                    <x-jet-label for="date_f" />
-                    <i class="fas fa-calendar"> Fecha final</i>
-                    <x-jet-input type="date" placeholder="Fecha final" wire:model="date_f"
-                        class="mt-1 block w-full rounded-fx" required />
-                    @error('date_f')
-                        <p class="text-red-500 font-semibold my-2">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                    {{-- end date_f --}}
+                        {{-- date_f --}}
+                        <x-jet-label for="date_f" />
+                        <i class="fas fa-calendar"> Fecha final</i>
+                        <x-jet-input type="date" placeholder="Fecha final" wire:model="date_f"
+                            class="mt-1 block w-full rounded-fx" required />
+                        @error('date_f')
+                            <p class="text-red-500 font-semibold my-2">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                        {{-- end date_f --}}
+                    
 
                     {{-- amount --}}
                     <x-jet-label for="amount" />
