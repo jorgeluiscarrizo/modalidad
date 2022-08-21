@@ -14,8 +14,4 @@ class Product extends Model
         'slug',
         'state',
     ];
-    public function batchs()
-    {
-        return $this->hasMany(Batch::class)->withTimestamps();
-    }
 }
