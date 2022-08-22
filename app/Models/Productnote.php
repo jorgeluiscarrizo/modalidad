@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Productnote extends Model
 {
     protected $fillable = [
-        'batche_id',
+        'batch_id',
         'note_id',
         'amount',
         'price',

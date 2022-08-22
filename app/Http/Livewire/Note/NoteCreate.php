@@ -28,7 +28,7 @@ class NoteCreate extends Component
     public $seller;
 
     public $batchs;
-    public $batche_id;
+    public $batch_id;
     public $batch;
 
     public $cart;
@@ -81,7 +81,7 @@ class NoteCreate extends Component
                     'amount' => $item['quantity'],
                     'price' => $item['price'],
                     'subtotal' => $item['subtotal'],
-                    'batche_id' => $id_,
+                    'batch_id' => $id_,
                     'note_id' => $note->id,
                 ]);
             }
@@ -124,6 +124,7 @@ class NoteCreate extends Component
         $cart_session_ = session()->get('cart');
         foreach ($cart_session_ as $id_ => $item) {
             $batch = Batch::find($id_);
+            //dd($batch);
             $batch->stock =$batch->stock-$item['quantity'];
             $batch->update([
                 'stock' => $batch->stock,           
@@ -162,7 +163,7 @@ class NoteCreate extends Component
     }
     public function showInfoBatch()
     {
-        $this->batch = Batch::find($this->batche_id);
+        $this->batch = Batch::find($this->batch_id);
     }
 
     //Funciones para carrito de compras
@@ -183,7 +184,7 @@ class NoteCreate extends Component
         $price = 0;
         $price = $this->batch->price;
 
-        $this->cart->addProductCart($this->batche_id, 1, $price);
+        $this->cart->addProductCart($this->batch_id, 1, $price);
         $this->toastAddProduct($this->batch->name);
     }
     public function updateQuantity($id)

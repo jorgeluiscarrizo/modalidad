@@ -46,6 +46,8 @@ use App\Http\Livewire\Batch\BatchUpdate;
 use App\Http\Livewire\Note\NoteCreate;
 use App\Http\Livewire\Note\NoteDashboard;
 use App\Http\Livewire\Note\NoteInformation;
+use App\Http\Livewire\Note\NotePrint;
+use App\Http\Livewire\NoteCancelled\NoteCancelledDashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,9 +81,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'language'], 'prefix'
     Route::get('city-create', CityCreate::class)->name('city.create')->middleware('auth', 'role:admin|user');
     Route::get('city-update/{slug}', CityUpdate::class)->name('city.update')->middleware('auth', 'role:admin|user');
       //producto
-    Route::get('product', ProductDashboard::class)->name('product.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('product-create', ProductCreate::class)->name('product.create')->middleware('auth', 'role:admin|user');
-    Route::get('product-update/{slug}', ProductUpdate::class)->name('product.update')->middleware('auth', 'role:admin|user');
+    Route::get('product', ProductDashboard::class)->name('product.dashboard')->middleware('auth', 'role:admin');
+    Route::get('product-create', ProductCreate::class)->name('product.create')->middleware('auth', 'role:admin');
+    Route::get('product-update/{slug}', ProductUpdate::class)->name('product.update')->middleware('auth', 'role:admin');
       //meta
     Route::get('goal', GoalDashboard::class)->name('goal.dashboard')->middleware('auth', 'role:admin');
     Route::get('goal-create', GoalCreate::class)->name('goal.create')->middleware('auth', 'role:admin');
@@ -104,13 +106,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'language'], 'prefix'
     Route::get('user-update/{id}', UserUpdate::class)->name('user.update')->middleware('auth', 'role:admin');
     //lote
     //Admin Batch
-    Route::get('batch', BatchDashboard::class)->name('batch.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('batch-create', BatchCreate::class)->name('batch.create')->middleware('auth', 'role:admin|user');
-    Route::get('batch-update/{slug}', BatchUpdate::class)->name('batch.update')->middleware('auth', 'role:admin|user');
-    //Admin User
+    Route::get('batch', BatchDashboard::class)->name('batch.dashboard')->middleware('auth', 'role:admin');
+    Route::get('batch-create', BatchCreate::class)->name('batch.create')->middleware('auth', 'role:admin');
+    Route::get('batch-update/{slug}', BatchUpdate::class)->name('batch.update')->middleware('auth', 'role:admin');
+    //Admin Notas
     Route::get('note', NoteDashboard::class)->name('note.dashboard')->middleware('auth', 'role:admin');
     Route::get('note-create', NoteCreate::class)->name('note.create')->middleware('auth', 'role:admin');
     Route::get('note-information/{slug}', NoteInformation::class)->name('note.information')->middleware('auth', 'role:admin');
+    Route::get('note-print/{slug}', NotePrint::class)->name('note.print')->middleware('auth', 'role:admin');
+    Route::get('notecancelled', NoteCancelledDashboard::class)->name('notecancelled.dashboard')->middleware('auth', 'role:admin');
+
     
 });
 

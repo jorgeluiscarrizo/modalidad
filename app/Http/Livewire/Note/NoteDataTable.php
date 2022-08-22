@@ -8,6 +8,7 @@ use App\Models\Batch;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+
 class NoteDataTable extends LivewireDatatable
 {
     public $model = Note::class;
@@ -18,12 +19,12 @@ class NoteDataTable extends LivewireDatatable
     {
         //return Note::query();
         return Note::query()->where('notes.state', '!=', 'DELETED')
-        ->join('sellers', function ($join) {
-            $join->on('sellers.id', '=', 'notes.seller_id',);
-        })
-        ->join('clients', function ($join) {
-            $join->on('clients.id', '=', 'notes.client_id');
-        });
+            ->join('sellers', function ($join) {
+                $join->on('sellers.id', '=', 'notes.seller_id',);
+            })
+            ->join('clients', function ($join) {
+                $join->on('clients.id', '=', 'notes.client_id');
+            });
     }
 
     public function columns()
@@ -33,11 +34,11 @@ class NoteDataTable extends LivewireDatatable
                 ->searchable()
                 ->label('Codigo'),
 
-                Column::name('sellers.name')
+            Column::name('sellers.name')
                 ->searchable()
                 ->label('Vendedor'),
 
-                Column::name('clients.name')
+            Column::name('clients.name')
                 ->searchable()
                 ->label('Cliente'),
 
@@ -60,15 +61,16 @@ class NoteDataTable extends LivewireDatatable
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 return view('livewire.note.note-table-actions', ['id' => $id, 'slug' => $slug]);
-                })->label('Opciones')
+            })->label('Opciones')
                 ->excludeFromExport()
 
         ];
     }
-    public function cancelsale($id){
+    public function cancelnote($id)
+    {
         $this->productnotes = Productnote::all()->where('note_id', $id);
         foreach ($this->productnotes as $id_ => $item) {
-            
+
             $this->batch = Batch::where('id', $item['batche_id'])->firstOrFail();
             $this->batch->update([
                 'stock' =>  $this->batch->stock + $item['quantity'],
@@ -95,10 +97,10 @@ class NoteDataTable extends LivewireDatatable
     ];
     public function confirmed()
     {
-        
+
         if ($this->idDelet) {
             $Note = Note::find($this->idDelet);
-            $this->cancelsale($this->idDelet);
+            $this->cancelnote($this->idDelet);
             $Note->state = "DELETED";
             $Note->update();
         }

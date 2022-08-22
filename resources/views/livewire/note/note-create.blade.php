@@ -88,7 +88,7 @@
                 <div class="">
                     <i class="fas fa-hand-pointer"> Seleccionar Lote </i>
                 </div>
-                <select id="select-batchs" wire:model="batche_id"
+                <select id="select-batchs" wire:model="batch_id"
                     class="border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 shadow-sm mt-1 block w-full rounded-full"
                     required>
                     <option selected>(Seleccionar)</option>
@@ -100,7 +100,7 @@
                         <option disabled>Sin registros</option>
                     @endforelse
                 </select>
-                @error('batche_id')
+                @error('batch_id')
                     <p class="text-red-500 font-semibold my-2">
                         {{ $message }}
                     </p>
@@ -173,7 +173,7 @@
                                     @foreach ($cart_session_ as $id => $item)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{-- {{ $item['name'] }} --}}
+                                                 {{ $item['name'] }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 <x-jet-input class="rounded-fx" type="number" name="quantity_product"
@@ -280,7 +280,7 @@
 
             $('#select-batchs').select2();
             $('#select-batchs').on('change', function() {
-                @this.set('batche_id', this.value);
+                @this.set('batch_id', this.value);
                 @this.showInfoBatch()
             });
 
