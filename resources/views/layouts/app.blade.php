@@ -117,8 +117,9 @@
                     <i class="fas fa-clipboard"></i>Notas de Venta
                 </x-a-sidenav>
                 {{-- nota anuladas--}}
-                <x-a-sidenav href="{{ route('notecancelled.dashboard') }}" :active="request()->routeIs('notecancelled.dashboard')">
-                    <i class="fas fa-ban"></i> Notas anuladas
+                <x-a-sidenav href="{{ route('notecancelled.dashboard') }}" :active="request()->routeIs('notecancelled.dashboard')"
+                    class="text-l font-semibold tracking-widest text-primary-500 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+                    <i class="fas fa-minus-circle"></i> Notas anuladas
                 </x-a-sidenav>
                 {{-- lote --}}
                 <x-a-sidenav href="{{ route('batch.dashboard') }}" :active="request()->routeIs('batch.dashboard') ||
