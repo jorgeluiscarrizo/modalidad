@@ -15,7 +15,7 @@ class NoteCancelledDataTable extends LivewireDatatable
     public $model = Note::class;
     public $notedetails;
     public $batch;
-    public $hideable = 'select';
+  
 
     public function builder()
     {

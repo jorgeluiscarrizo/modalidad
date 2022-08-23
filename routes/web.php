@@ -69,17 +69,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'language'], 'prefix'
         return view('dashboard');
     })->name('dashboard');
     //tipo
-    Route::get('type', TypeDashboard::class)->name('type.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('type-create', TypeCreate::class)->name('type.create')->middleware('auth', 'role:admin|user');
-    Route::get('type-update/{slug}', TypeUpdate::class)->name('type.update')->middleware('auth', 'role:admin|user');
+    Route::get('type', TypeDashboard::class)->name('type.dashboard')->middleware('auth', 'role:admin');
+    Route::get('type-create', TypeCreate::class)->name('type.create')->middleware('auth', 'role:admin');
+    Route::get('type-update/{slug}', TypeUpdate::class)->name('type.update')->middleware('auth', 'role:admin');
     //vendedor
-    Route::get('seller', SellerDashboard::class)->name('seller.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('seller-create', SellerCreate::class)->name('seller.create')->middleware('auth', 'role:admin|user');
-    Route::get('seller-update/{slug}', SellerUpdate::class)->name('seller.update')->middleware('auth', 'role:admin|user');
+    Route::get('seller', SellerDashboard::class)->name('seller.dashboard')->middleware('auth', 'role:admin');
+    Route::get('seller-create', SellerCreate::class)->name('seller.create')->middleware('auth', 'role:admin');
+    Route::get('seller-update/{slug}', SellerUpdate::class)->name('seller.update')->middleware('auth', 'role:admin');
      //ciudad
-    Route::get('city', CityDashboard::class)->name('city.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('city-create', CityCreate::class)->name('city.create')->middleware('auth', 'role:admin|user');
-    Route::get('city-update/{slug}', CityUpdate::class)->name('city.update')->middleware('auth', 'role:admin|user');
+    Route::get('city', CityDashboard::class)->name('city.dashboard');
+    Route::get('city-create', CityCreate::class)->name('city.create');
+    Route::get('city-update/{slug}', CityUpdate::class)->name('city.update');
       //producto
     Route::get('product', ProductDashboard::class)->name('product.dashboard')->middleware('auth', 'role:admin');
     Route::get('product-create', ProductCreate::class)->name('product.create')->middleware('auth', 'role:admin');
@@ -89,34 +89,32 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'language'], 'prefix'
     Route::get('goal-create', GoalCreate::class)->name('goal.create')->middleware('auth', 'role:admin');
     Route::get('goal-update/{slug}', GoalUpdate::class)->name('goal.update')->middleware('auth', 'role:admin');
     //cliente
-    Route::get('client', ClientDashboard::class)->name('client.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('client-create', ClientCreate::class)->name('client.create')->middleware('auth', 'role:admin|user');
-    Route::get('client-update/{slug}', ClientUpdate::class)->name('client.update')->middleware('auth', 'role:admin|user');
+    Route::get('client', ClientDashboard::class)->name('client.dashboard');
+    Route::get('client-create', ClientCreate::class)->name('client.create');
+    Route::get('client-update/{slug}', ClientUpdate::class)->name('client.update');
     //rutas
-    Route::get('route', RouteDashboard::class)->name('route.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('route-create', RouteCreate::class)->name('route.create')->middleware('auth', 'role:admin|user');
-    Route::get('route-update/{slug}', RouteUpdate::class)->name('route.update')->middleware('auth', 'role:admin|user');
+    Route::get('route', RouteDashboard::class)->name('route.dashboard');
+    Route::get('route-create', RouteCreate::class)->name('route.create');
+    Route::get('route-update/{slug}', RouteUpdate::class)->name('route.update');
     //dellevenddedor
-    Route::get('detailseller', DetailsellerDashboard::class)->name('detailseller.dashboard')->middleware('auth', 'role:admin|user');
-    Route::get('detailseller-create', DetailsellerCreate::class)->name('detailseller.create')->middleware('auth', 'role:admin|user');
-    Route::get('detailseller-update/{slug}', DetailsellerUpdate::class)->name('detailseller.update')->middleware('auth', 'role:admin|user');
+    Route::get('detailseller', DetailsellerDashboard::class)->name('detailseller.dashboard');
+    Route::get('detailseller-create', DetailsellerCreate::class)->name('detailseller.create');
+    Route::get('detailseller-update/{slug}', DetailsellerUpdate::class)->name('detailseller.update');
     //Admin User
     Route::get('user', UserDashboard::class)->name('user.dashboard')->middleware('auth', 'role:admin');
     Route::get('user-create', UserCreate::class)->name('user.create')->middleware('auth', 'role:admin');
     Route::get('user-update/{id}', UserUpdate::class)->name('user.update')->middleware('auth', 'role:admin');
     //lote
     //Admin Batch
-    Route::get('batch', BatchDashboard::class)->name('batch.dashboard')->middleware('auth', 'role:admin');
-    Route::get('batch-create', BatchCreate::class)->name('batch.create')->middleware('auth', 'role:admin');
-    Route::get('batch-update/{slug}', BatchUpdate::class)->name('batch.update')->middleware('auth', 'role:admin');
+    Route::get('batch', BatchDashboard::class)->name('batch.dashboard');
+    Route::get('batch-create', BatchCreate::class)->name('batch.create');
+    Route::get('batch-update/{slug}', BatchUpdate::class)->name('batch.update');
     //Admin Notas
     Route::get('note', NoteDashboard::class)->name('note.dashboard')->middleware('auth', 'role:admin');
     Route::get('note-create', NoteCreate::class)->name('note.create')->middleware('auth', 'role:admin');
     Route::get('note-information/{slug}', NoteInformation::class)->name('note.information')->middleware('auth', 'role:admin');
     Route::get('note-print/{slug}', NotePrint::class)->name('note.print')->middleware('auth', 'role:admin');
     Route::get('notecancelled', NoteCancelledDashboard::class)->name('notecancelled.dashboard')->middleware('auth', 'role:admin');
-
-    
 });
 
 Route::get('/', function () {
