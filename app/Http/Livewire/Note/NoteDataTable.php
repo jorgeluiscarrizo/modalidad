@@ -66,22 +66,11 @@ class NoteDataTable extends LivewireDatatable
 
         ];
     }
-    public function cancelnote($id)
-    {
-        $this->productnotes = Productnote::all()->where('note_id', $id);
-        foreach ($this->productnotes as $id_ => $item) {
-
-            $this->batch = Batch::where('id', $item['batche_id'])->firstOrFail();
-            $this->batch->update([
-                'stock' =>  $this->batch->stock + $item['quantity'],
-            ]);
-        }
-    }
     public $idDelet;
     public function toastConfirmDelet($id)
     {
         $this->idDelet = $id;
-        $this->confirm(__('¿Estas seguro que seas anular el registro?'), [
+        $this->confirm(__('¿Estas seguro que seas eliminar el registro?'), [
             'icon' => 'warning',
             'position' =>  'center',
             'toast' =>  false,
@@ -97,12 +86,23 @@ class NoteDataTable extends LivewireDatatable
     ];
     public function confirmed()
     {
-
         if ($this->idDelet) {
             $Note = Note::find($this->idDelet);
-            $this->cancelnote($this->idDelet);
+            $this->cancelnote($Note->id);
             $Note->state = "DELETED";
             $Note->update();
+        }
+    }
+    public function cancelnote($id)
+    {
+
+        $this->productnotes = Productnote::all()->where('note_id', $id);
+        foreach ($this->productnotes as $id_ => $item) {
+        
+            $this->batch = Batch::where('id', $item['batch_id'])->firstOrFail();
+            $this->batch->update([
+                'stock' =>  $this->batch->stock + $item['quantity'],
+            ]);
         }
     }
 }
